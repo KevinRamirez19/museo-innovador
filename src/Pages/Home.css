@@ -1,0 +1,384 @@
+/* Estilos generales */
+.home {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav li {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav a:hover {
+  transform: scale(1.1);
+  color: #f1c40f;
+}
+
+.nav .nav-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover .nav-icon {
+  transform: translateX(5px);
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  color: rgb(0, 0, 0);
+  padding: 120px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.hero button {
+  padding: 15px 30px;
+  background-color: #f1c40f;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.hero button:hover {
+  background-color: #e67e22;
+}
+
+/* Exposiciones */
+.exposiciones {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.exposiciones h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+/* Centrado general de listas */
+.exposiciones-list,
+.eventos-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: center;
+  overflow-x: auto;
+}
+
+/* Estilos generales para las imágenes de exposiciones y eventos */
+.exposicion img, .evento img {
+  width: 100%; /* La imagen ocupa el 100% del espacio disponible */
+  max-width: 300px; /* Limita el tamaño máximo de la imagen */
+  height: auto; /* Mantiene la relación de aspecto */
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+  margin-bottom: 15px; /* Espacio entre la imagen y el texto */
+}
+
+.exposicion img:hover {
+  transform: scale(1.05);
+}
+
+.exposicion h3 {
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Eventos */
+.eventos {
+  padding: 80px 20px;
+  background-color: #ffffff;
+}
+
+.eventos h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.eventos-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.evento {
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgb(171, 200, 25);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.evento:hover {
+  transform: scale(1.05);
+}
+
+.evento h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.evento p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.btn-close {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-explore {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.partners-list li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.partners-list li a:hover {
+  color: #007BFF;
+}
+
+/* Animaciones para la lista de colaboradores */
+.partners-list li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.partners-list li:hover {
+  transform: translateY(-5px);
+  color: #007BFF;
+}
+
+/* Transición de entrada del modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilos para el pie de página */
+.footer {
+  padding: 50px 20px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
+
+.footer .contacto {
+  text-align: center;
+}
+
+.footer .social a {
+  color: white;
+  margin-right: 15px;
+  font-size: 18px;
+}
+
+.footer .social a:hover {
+  text-decoration: underline;
+}
+
+.footer .suscripcion {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer input {
+  padding: 12px;
+  width: 280px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.footer button {
+  padding: 12px 25px;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.footer button:hover {
+  background-color: #e67e22;
+}
+/* Estilos generales para el navbar */
+.navbar {
+  width: 100%;
+  background-color: #ffffff; /* Puedes cambiarlo a otro color */
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Contenedor para mantener contenido centrado y alineado */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo ajustado */
+.logo img {
+  height: 50px;
+}
+
+/* Navegación */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #ffd700;
+}
+
+.nav-icon {
+  font-size: 1rem;
+}
+
