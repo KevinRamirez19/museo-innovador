@@ -1,3 +1,4 @@
+// ... importaciones sin cambios
 import { useState } from 'react';
 import { FaHome, FaInfoCircle, FaImages, FaPhoneAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -24,7 +25,7 @@ const Home = () => {
 
   const closeModal = () => setModalOpen(false);
 
-  const exposiciones = [
+const exposiciones = [
     {
       titulo: 'Puente de Boyacá',
       imagen: 'https://imagenes.eltiempo.com/files/og_thumbnail/uploads/2019/02/26/5c75671a198e1.jpeg',
@@ -141,7 +142,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Modal con efecto glassmorphism */}
       <AnimatePresence>
         {modalOpen && (
           <motion.div
@@ -152,19 +153,15 @@ const Home = () => {
           >
             <motion.div
               style={{
-                ...styles.modal,
+                ...styles.modalGlass,
                 backgroundImage: `url(${modalContent.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                color: '#fff',
               }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
             >
               <button onClick={closeModal} style={styles.closeButton}>×</button>
-              <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', padding: '1rem', borderRadius: '12px' }}>
+              <div style={styles.modalContent}>
                 <h2>{modalContent.title}</h2>
                 <p>{modalContent.description}</p>
                 <button onClick={closeModal} style={styles.heroButton}>Cerrar</button>
@@ -183,8 +180,9 @@ export default Home;
 const styles: { [key: string]: React.CSSProperties } = {
   page: {
     fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#f4f4f4',
+    backgroundColor: '#f0f2f5',
     color: '#333',
+    scrollBehavior: 'smooth',
     width: '204%',
   },
   navbar: {
@@ -250,7 +248,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
     cursor: 'pointer',
     textAlign: 'center',
-    transition: 'transform 0.3s ease',
   },
   cardImage: {
     width: '100%',
@@ -268,14 +265,23 @@ const styles: { [key: string]: React.CSSProperties } = {
     alignItems: 'center',
     zIndex: 1000,
   },
-  modal: {
+  modalGlass: {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(10px)',
+    borderRadius: '20px',
     padding: '2rem',
-    borderRadius: '12px',
     maxWidth: '600px',
     width: '90%',
     textAlign: 'center',
+    color: 'white',
     position: 'relative',
-    boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  modalContent: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    padding: '1rem',
+    borderRadius: '12px',
   },
   closeButton: {
     position: 'absolute',
