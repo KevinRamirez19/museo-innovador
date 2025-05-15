@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { FaHome, FaInfoCircle, FaImages, FaCalendarAlt, FaPhoneAlt } from 'react-icons/fa';
-import './Home.css';
+import { FaHome, FaInfoCircle, FaImages, FaPhoneAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface ModalContent {
   title: string;
@@ -26,11 +26,11 @@ const Home = () => {
 
   const exposiciones = [
     {
-      titulo: 'Puente de boyaca',
+      titulo: 'Puente de Boyacá',
       imagen: 'https://imagenes.eltiempo.com/files/og_thumbnail/uploads/2019/02/26/5c75671a198e1.jpeg',
     },
     {
-      titulo: 'Guerra de los mil dias',
+      titulo: 'Guerra de los Mil Días',
       imagen: 'https://bayanodigital.com/wp-content/uploads/2018/05/Representai%C3%B3n-de-la-Guerra-de-los-Mil-D%C3%ADas.jpg',
     },
     {
@@ -41,113 +41,250 @@ const Home = () => {
 
   const eventos = [
     {
-      titulo: 'Evento 1',
-      descripcionCorta: 'Descripción breve',
-      descripcionLarga: 'Descripción detallada del Evento 1',
-      imagen:
-        'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2019/07/19/5d31fe81ee9f9.jpeg',
+      titulo: 'Espada de bolivar',
+      descripcionCorta: 'Símbolo de libertad y lucha por la independencia de Colombia.',
+      descripcionLarga: 'La espada de Simón Bolívar representa la lucha por la emancipación de los pueblos latinoamericanos...',
+      imagen: 'https://imagenes.eltiempo.com/files/image_1200_600/uploads/2019/07/19/5d31fe81ee9f9.jpeg',
     },
     {
-      titulo: 'Evento 2',
-      descripcionCorta: 'Descripción breve',
-      descripcionLarga: 'Descripción detallada del Evento 2',
-      imagen:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/El_Florero_de_Llorente.JPG/2560px-El_Florero_de_Llorente.JPG',
+      titulo: 'Jarron de llorente',
+      descripcionCorta: 'Objeto central del grito de independencia del 20 de julio de 1810.',
+      descripcionLarga: 'El Florero de Llorente es una pieza clave en la historia colombiana...',
+      imagen: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/El_Florero_de_Llorente.JPG/2560px-El_Florero_de_Llorente.JPG',
     },
     {
-      titulo: 'Evento 3',
-      descripcionCorta: 'Descripción breve',
-      descripcionLarga: 'Descripción detallada del Evento 3',
-      imagen:
-        'https://blogtrip.org/wp-content/uploads/2016/05/poporo-quimbaya-dorado-museo-del-oro.jpg',
+      titulo: 'Poporo quimbaya',
+      descripcionCorta: 'Artefacto precolombino de gran valor cultural y espiritual.',
+      descripcionLarga: 'El Poporo Quimbaya es una joya de la orfebrería indígena...',
+      imagen: 'https://blogtrip.org/wp-content/uploads/2016/05/poporo-quimbaya-dorado-museo-del-oro.jpg',
     },
     {
-      titulo: 'Evento 4',
-      descripcionCorta: 'Descripcion breve',
-      descripcionLarga: 'Descripcion detallada del evento 4',
-      imagen:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/El_Bogotazo.jpg/1200px-El_Bogotazo.jpg',
+      titulo: 'Bogotazo',
+      descripcionCorta: 'Violenta revuelta tras el asesinato de Jorge Eliécer Gaitán en 1948.',
+      descripcionLarga: 'El Bogotazo fue una insurrección social masiva ocurrida el 9 de abril de 1948...',
+      imagen: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/El_Bogotazo.jpg/1200px-El_Bogotazo.jpg',
     },
   ];
 
   return (
-    <div className="home">
-    <header className="navbar">
-  <div className="navbar-container">
-    <div className="logo">
-     
-      
-    </div>
-   <nav className="nav">
-  <ul>
-    <li><Link to="/"><FaHome className="nav-icon" /> Inicio</Link></li>
-    <li><Link to="/VisitaVirtual"><FaInfoCircle className="nav-icon" />Visita Virtual</Link></li>
-    <li><Link to="/Exposiciones"><FaImages className="nav-icon" /> Exposiciones</Link></li>
-    <li><Link to=".Pages/GamesMenu"><FaCalendarAlt className="nav-icon" /> MenuJuegos</Link></li>
-    <li><Link to="/Contacto"><FaPhoneAlt className="nav-icon" /> Contacto</Link></li>
-  </ul>
-</nav>
+    <div style={styles.page}>
+      {/* Navbar */}
+      <header style={styles.navbar}>
+        <nav style={styles.nav}>
+          <Link to="/" style={styles.navLink}><FaHome /> Inicio</Link>
+          <Link to="/VisitaVirtual" style={styles.navLink}><FaInfoCircle /> Visita Virtual</Link>
+          <Link to="/Exposiciones" style={styles.navLink}><FaImages /> Exposiciones</Link>
+          <Link to="/Contacto" style={styles.navLink}><FaPhoneAlt /> Contacto</Link>
+        </nav>
+      </header>
 
-  </div>
-</header>
-
-
-      {/* Hero Section */}
-      <section className="hero">
-        <h1>Bienvenido a Raices Digitales</h1>
-        <p>Explora nuestras exposiciones y eventos en línea desde cualquier lugar.</p>
-        <button className="btn-explore">Explorar ahora</button>
+      {/* Hero */}
+      <section style={styles.hero}>
+        <motion.h1
+          style={styles.heroTitle}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Bienvenido a Raíces Digitales
+        </motion.h1>
+        <motion.p
+          style={styles.heroText}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          Explora nuestras exposiciones y eventos en línea desde cualquier lugar.
+        </motion.p>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={styles.heroButton}
+        >
+          Explorar ahora
+        </motion.button>
       </section>
 
       {/* Exposiciones */}
-      <section className="exposiciones" id="exhibitions">
-        <h2>Exposiciones Destacadas</h2>
-        <div className="exposiciones-list">
-          {exposiciones.map(({ titulo, imagen }, index) => (
-            <div className="exposicion" key={index}>
-              <img src={imagen} alt={titulo} />
+      <section style={styles.section}>
+        <h2 style={styles.sectionTitle}>Exposiciones Destacadas</h2>
+        <div style={styles.cardGrid}>
+          {exposiciones.map(({ titulo, imagen }, i) => (
+            <motion.div
+              key={i}
+              style={styles.card}
+              whileHover={{ scale: 1.03 }}
+            >
+              <img src={imagen} alt={titulo} style={styles.cardImage} />
               <h3>{titulo}</h3>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* Eventos */}
-      <section className="eventos" id="events">
-        <h2>Próximos Eventos</h2>
-        <div className="eventos-list">
-          {eventos.map(({ titulo, descripcionCorta, descripcionLarga, imagen }, index) => (
-            <div
-              className="evento"
-              key={index}
+      <section style={styles.section}>
+        <h2 style={styles.sectionTitle}>Próximos Eventos</h2>
+        <div style={styles.cardGrid}>
+          {eventos.map(({ titulo, descripcionCorta, descripcionLarga, imagen }, i) => (
+            <motion.div
+              key={i}
+              style={styles.card}
+              whileHover={{ scale: 1.03 }}
               onClick={() => openModal(titulo, descripcionLarga, imagen)}
             >
-              <img src={imagen} alt={titulo} />
+              <img src={imagen} alt={titulo} style={styles.cardImage} />
               <h3>{titulo}</h3>
               <p>{descripcionCorta}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* Modal */}
-      {modalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeModal} role="button" aria-label="Cerrar modal">
-              ×
-            </span>
-            <h2>{modalContent.title}</h2>
-            <img src={modalContent.image} alt={modalContent.title} className="modal-image" />
-            <p>{modalContent.description}</p>
-            <button className="btn-close" onClick={closeModal}>
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            style={styles.modalOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              style={{
+                ...styles.modal,
+                backgroundImage: `url(${modalContent.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                color: '#fff',
+              }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+            >
+              <button onClick={closeModal} style={styles.closeButton}>×</button>
+              <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)', padding: '1rem', borderRadius: '12px' }}>
+                <h2>{modalContent.title}</h2>
+                <p>{modalContent.description}</p>
+                <button onClick={closeModal} style={styles.heroButton}>Cerrar</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default Home;
+
+// 🎨 Estilos
+const styles: { [key: string]: React.CSSProperties } = {
+  page: {
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f4f4f4',
+    color: '#333',
+    width: '204%',
+  },
+  navbar: {
+    backgroundColor: '#1a1a1a',
+    padding: '1rem',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  nav: {
+    display: 'flex',
+    gap: '2rem',
+  },
+  navLink: {
+    color: '#fff',
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    fontSize: '1rem',
+  },
+  hero: {
+    backgroundImage: 'url("https://www.mincultura.gov.co/areas/patrimonio/publicaciones/PublishingImages/patrimonio-cultural-de-colombia.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    color: 'black',
+    textAlign: 'center',
+    padding: '6rem 2rem',
+  },
+  heroTitle: {
+    fontSize: '3rem',
+    marginBottom: '1rem',
+  },
+  heroText: {
+    fontSize: '1.25rem',
+    marginBottom: '2rem',
+  },
+  heroButton: {
+    padding: '0.75rem 1.5rem',
+    backgroundColor: '#ff9900',
+    border: 'none',
+    borderRadius: '8px',
+    color: 'white',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+  },
+  section: {
+    padding: '4rem 2rem',
+  },
+  sectionTitle: {
+    fontSize: '2rem',
+    marginBottom: '2rem',
+    textAlign: 'center',
+  },
+  cardGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '2rem',
+  },
+  card: {
+    backgroundColor: 'white',
+    padding: '1rem',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    cursor: 'pointer',
+    textAlign: 'center',
+    transition: 'transform 0.3s ease',
+  },
+  cardImage: {
+    width: '100%',
+    height: '180px',
+    objectFit: 'cover',
+    borderRadius: '8px',
+    marginBottom: '1rem',
+  },
+  modalOverlay: {
+    position: 'fixed',
+    top: 0, left: 0, right: 0, bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+  },
+  modal: {
+    padding: '2rem',
+    borderRadius: '12px',
+    maxWidth: '600px',
+    width: '90%',
+    textAlign: 'center',
+    position: 'relative',
+    boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
+    background: 'transparent',
+    border: 'none',
+    fontSize: '1.5rem',
+    color: '#fff',
+    cursor: 'pointer',
+  },
+};
