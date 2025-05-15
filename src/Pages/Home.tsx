@@ -83,7 +83,7 @@ const Home = () => {
     <li><Link to="/"><FaHome className="nav-icon" /> Inicio</Link></li>
     <li><Link to="/VisitaVirtual"><FaInfoCircle className="nav-icon" />Visita Virtual</Link></li>
     <li><Link to="/Exposiciones"><FaImages className="nav-icon" /> Exposiciones</Link></li>
-    <li><Link to="/SobreMuseo"><FaCalendarAlt className="nav-icon" /> SobreMuseo</Link></li>
+    <li><Link to=".Pages/GamesMenu"><FaCalendarAlt className="nav-icon" /> MenuJuegos</Link></li>
     <li><Link to="/Contacto"><FaPhoneAlt className="nav-icon" /> Contacto</Link></li>
   </ul>
 </nav>
