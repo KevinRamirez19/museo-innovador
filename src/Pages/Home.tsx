@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaHome, FaInfoCircle, FaImages, FaCalendarAlt, FaPhoneAlt } from 'react-icons/fa';
-import './home.css';
+import './Home.css';
 import { Link } from 'react-router-dom';
 
 interface ModalContent {
